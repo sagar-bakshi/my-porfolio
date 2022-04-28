@@ -22,7 +22,6 @@ function App() {
         <Route index path="/skills" element={<MySkillPage />} />
        </Routes>
       </ThemeProvider>
-
     </>
   );
 }

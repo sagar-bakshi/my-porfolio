@@ -43,7 +43,7 @@ z-index:1;
 
 
 const WORK = styled(Link)`
-color: ${props => props.click ? props.theme.body : props.theme.text};
+color: ${props => props.click ? props.theme.body : props.theme.body};
 position: absolute;
 top: 50%;
 left: calc(1rem + 2vw);
@@ -83,10 +83,9 @@ to{
 `
 
 const Center = styled.button`
-
     position: absolute;
-    top: ${props => props.click ? '85%' :'50%'};
-    left: ${props => props.click ? '92%' :'50%' };
+    top: ${props => props.click ? '85%' :'50%'  };
+    left: ${props => props.click ? '92%' :'50%'  };
     transform: translate(-50%,-50%);
     border: none;
     outline: none;
@@ -98,17 +97,26 @@ const Center = styled.button`
     align-items: center;
     transition: all 1s ease;
 
-    &>:first-child{
-        animation: ${rotate} infinite 1.5s linear;
-    }
-    &>:last-child{
-        display: ${props => props.click ? 'none' :'inline-block'  };
-        padding-top: 1rem;
-    }
-
+&>:first-child{
+    animation: ${rotate} infinite 1.5s linear;
+}
+&>:last-child{
+    display: ${props => props.click ? 'none' :'inline-block'  };
+    padding-top: 1rem;
+}
 `
 
-
+const DarkDiv = styled.div`
+    position: absolute;
+    top: 0;
+    background-color: #000;
+    bottom: 0;
+    right: 50%;
+    width: ${props => props.click ? '50%' : '0%'};
+    height: ${props => props.click ? '100%' : '0%'};
+    z-index:1;
+    transition: height 0.5s ease, width 1s ease 0.5s;
+`
 
 
 const Main = () => {
@@ -117,16 +125,15 @@ const Main = () => {
 
     const handleClick = () => setClick(!click);
 
-    console.log(click);
-
 
   return (
     <MainContainer>.
         <Container>
             <PowerBotton/>
             <LogoComponent/>
-            <SocialIcons/>
-            <Center>
+            <SocialIcons click={click} />
+            <DarkDiv click={click}/>
+            <Center click={click}>
                 <YinYang onClick={()=>handleClick()} width={click ? 120 : 200} height={click ? 120 : 200} fill='currentColor' />
                 <span>Click Me.</span>
             </Center>
@@ -140,13 +147,13 @@ const Main = () => {
                     Blog
                 </h4>
             </BLOG>
-            <WORK to='/work' target='_blank'>
+            <WORK click={click} to='/work' target='_blank'>
                 <h4>
                     Work
                 </h4>
             </WORK>
             <BottomBar>
-                <ABOUT to='/about' target='_blank'>
+                <ABOUT click={click} to='/about' target='_blank'>
                     <h4>
                         About
                     </h4>

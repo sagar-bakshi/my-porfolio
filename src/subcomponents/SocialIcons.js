@@ -24,7 +24,7 @@ const Line = styled.span`
     background-color:${props => props.theme.text}
 `
 
-const SocialIcons = () => {
+const SocialIcons = (props) => {
   return (
     <Icons>
         <div>
