@@ -19,9 +19,8 @@ function App() {
         <Route index path="/about" element={<AboutPage />} />
         <Route index path="/blog" element={<BlogPage />} />
         <Route index path="/work" element={<WorkPage />} />
-        <Route index path="/skill" element={<MySkillPage />} />
+        <Route index path="/skills" element={<MySkillPage />} />
        </Routes>
-
       </ThemeProvider>
 
     </>
