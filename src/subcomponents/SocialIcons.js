@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import { DarkTheme } from '../components/Themes'
 import { Facebook, Github, Twitter, YouTube } from '../data/AllSvg'
 
 const Icons = styled.div`
@@ -19,35 +20,37 @@ const Icons = styled.div`
 `
 
 const Line = styled.span`
+
     width: 2px;
     height: 8rem;
-    background-color:${props => props.theme.text}
+    background-color:${props => props.color === 'dark' ? DarkTheme.text : DarkTheme.body}
 `
 
 const SocialIcons = (props) => {
+   
   return (
     <Icons>
         <div>
             <Link to='' target='_blank' style={{color:'inherit'}}>
-                <Github width={25} height={25} fill='currnetColor'/>
+                <Github width={25} height={25} fill={props.theme === 'dark' ? DarkTheme.text : DarkTheme.body }/>
             </Link>
         </div>
         <div>
             <Link to='' target='_blank' style={{color:'inherit'}}>
-                <Twitter width={25} height={25} fill='currnetColor'/>
+                <Twitter width={25} height={25} fill={props.theme === 'dark' ? DarkTheme.text : DarkTheme.body }/>
             </Link>
         </div>
         <div>
             <Link to='' target='_blank' style={{color:'inherit'}}>
-                <Facebook width={25} height={25} fill='currnetColor'/>
+                <Facebook width={25} height={25} fill={props.theme === 'dark' ? DarkTheme.text : DarkTheme.body }/>
             </Link>
         </div>
         <div>
             <Link to='' target='_blank' style={{color:'inherit'}}>
-                <YouTube width={25} height={25} fill='currnetColor'/>
+                <YouTube width={25} height={25} fill={props.theme === 'dark' ? DarkTheme.text : DarkTheme.body }/>
             </Link>
         </div>
-        <Line/>
+        <Line color={props.theme}/>
     </Icons>
     
   )

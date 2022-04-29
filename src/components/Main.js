@@ -5,6 +5,8 @@ import { YinYang } from '../data/AllSvg'
 import LogoComponent from '../subcomponents/LogoComponent'
 import PowerBotton from '../subcomponents/PowerBotton'
 import SocialIcons from '../subcomponents/SocialIcons'
+import Intro from './Intro'
+import { motion } from 'framer-motion';
 
 const MainContainer = styled.div`
     background: ${props => props.theme.body};
@@ -127,20 +129,23 @@ const Main = () => {
 
 
   return (
-    <MainContainer>.
+    <MainContainer>
         <Container>
             <PowerBotton/>
-            <LogoComponent/>
-            <SocialIcons click={click} />
+            <LogoComponent theme={ click ? 'dark' : 'light' }/>
+            <SocialIcons theme={ click ? 'dark' : 'light' }  />
             <DarkDiv click={click}/>
             <Center click={click}>
                 <YinYang onClick={()=>handleClick()} width={click ? 120 : 200} height={click ? 120 : 200} fill='currentColor' />
                 <span>Click Me.</span>
             </Center>
             <Contact target='_blank' to={{pathname:"sagarbakshi@outlook.com"}}>
-                <h4>
+                <motion.h4
+                    whileHover={{scale:1}}
+                    whileTab={{scale:0.9}}
+                >
                     Mail Me..
-                </h4>
+                </motion.h4>
             </Contact>
             <BLOG to='/blog' target='_blank'>
                 <h4>
@@ -164,7 +169,8 @@ const Main = () => {
                     </h4>
                 </SKILLS>
             </BottomBar>
-        </Container>        
+        </Container>
+        {click ? <Intro/> : null}        
     </MainContainer>
   )
 }
